@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="compiled/styles.css" rel="stylesheet"></link>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/ngstorage/ngStorage.min.js"></script>
+    </head>
+  <body ng-app="myApp" ng-controller="NewCtrl">
+  <label><input type="text" class="input" ng-model="newItem.name" my-enter="addItem(newItem)" placeholder="Enter"></label>
+    <ul class="block">
+      <li class="li" ng-repeat="item in items track by $index">
+        <button class="off" ng-click="classChange(item);">CHANGE</button>
+        <h3 ng-class="{text_change: item.checked}" ng-model="saveClick">{{item.name}}</h3>
+        <button class="remove" ng-click="items = removeItem($index)">DELETE</button>
+      </li>
+    </ul>
+    <script src="compiled/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+.input {
+  text-align: center;
+  display: block;
+}
+.li {
+  background-color: #808080;
+  margin-bottom: 1%;
+  border-color: blue;
+}
+.block {
+    text-align: center;
+    list-style-type: none;
+}
+.text_change {
+  text-decoration: line-through;
+  color: #DCDCDC;
+}
+.off {
+  float: left;
+  background-color: transparent;
+}
+.off:hover {
+  background: green;
+}
+.remove {
+  float: right;
+  background-color: transparent;
+}
+.save_and_load {
+  float: right;
+  background-color: blue;
+}
+.remove:hover {
+  background: red;
+}
+
+h3 {
+  font-size: 20px;
+  position: relative;
+  color: black;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+}
