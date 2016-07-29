@@ -2,7 +2,6 @@ angular.module('myApp', ['ngStorage'])
   .controller('NewCtrl', function($scope, location, $localStorage) {
     $scope.newItem = {};
     $scope.items = location.getAll();
-    $scope.items = $localStorage.newItemsSave;
     $scope.addItem = function (item) {
       if (!item) {
         return;
@@ -16,11 +15,10 @@ angular.module('myApp', ['ngStorage'])
     $scope.change = "text";
     $scope.item = location.classChange(name);
     $scope.classChange = location.classChange;
-    $localStorage.newItemsSave = $scope.items;
 })
 .service('location', function($localStorage) {
+  var items = $localStorage.newItemsSave || [];
   return {
-      var items = $localStorage.newItemsSave || [];
         getAll: function() {
             return items;
         },
@@ -33,8 +31,8 @@ angular.module('myApp', ['ngStorage'])
           },
         addItem: function(item) {
             items.push(item);
-            return items;
             $localStorage.newItemsSave = items;
+            return items;
         },
         classChange: function(item) {
           item.checked = !item.checked;
@@ -43,7 +41,7 @@ angular.module('myApp', ['ngStorage'])
 })
 .directive('myEnter', function () {
     return function (scope, element, attrs) {
-        element.bind("keydown keypress", function (event) {
+        element.bind('keydown keypress', function (event) {
             if(event.which === 13) {
                 scope.$apply(function (){
                     scope.$eval(attrs.myEnter);
