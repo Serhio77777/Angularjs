@@ -8,35 +8,33 @@ angular.module('myApp', ['ngStorage'])
         return;
       };
       $scope.items = location.addItem(item);
-      if (item) {
-        $localStorage.newItemsSave = $scope.items;
-      };
       $scope.newItem = {};
     };
-    $scope.removeItem = function(index, item) {
-      $scope.items = location.removeItem(index, item);
-      $localStorage.newItemsSave = $scope.items;
+    $scope.removeItem = function(index) {
+      $scope.items = location.removeItem(index);
     };
     $scope.change = "text";
     $scope.item = location.classChange(name);
     $scope.classChange = location.classChange;
     $localStorage.newItemsSave = $scope.items;
 })
-
 .service('location', function($localStorage) {
-    var items = $localStorage.newItemsSave;
-    return {
+  return {
+      var items = $localStorage.newItemsSave || [];
         getAll: function() {
             return items;
         },
         removeItem: function(index, item) {
-            return items = items.filter(function(el, ind) {
+            items = items.filter(function(el, ind) {
                 return index !== ind;
             });
-        },
+            $localStorage.newItemsSave = items;
+            return items;
+          },
         addItem: function(item) {
             items.push(item);
             return items;
+            $localStorage.newItemsSave = items;
         },
         classChange: function(item) {
           item.checked = !item.checked;

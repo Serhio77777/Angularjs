@@ -11,7 +11,7 @@
       <li class="li" ng-repeat="item in items track by $index">
         <button class="off" ng-click="classChange(item);">CHANGE</button>
         <h3 ng-class="{text_change: item.checked}" ng-model="saveClick">{{item.name}}</h3>
-        <button class="remove" ng-click="items = removeItem($index)">DELETE</button>
+        <button class="remove" ng-click="removeItem($index)">DELETE</button>
       </li>
     </ul>
     <script src="compiled/app.js"></script>
