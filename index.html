@@ -9,7 +9,7 @@
   <label><input type="text" class="input" ng-model="newItem.name" my-enter="addItem(newItem)" placeholder="Enter"></label>
     <ul class="block">
       <li class="li" ng-repeat="item in items track by $index">
-        <button class="off" ng-click="classChange(item);">CHANGE</button>
+        <button class="off" ng-click="classChange(item)">CHANGE</button>
         <h3 ng-class="{text_change: item.checked}" ng-model="saveClick">{{item.name}}</h3>
         <button class="remove" ng-click="removeItem($index)">DELETE</button>
       </li>
